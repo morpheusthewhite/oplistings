@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\input{opl.tex}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{ % General setup for the package
+	language=opl,
+	columns=fullflexible, basicstyle=\ttfamily,
+	backgroundcolor=\color{white},frame=tlbr,framesep=4pt,framerule=0pt,
+	breaklines=true,
+	commentstyle=\color{gray},
+	keywordstyle=\color{blue},
+	extendedchars=true
+} 
+
+\begin{document}
+	
+	\section*{Hello opl}
+	
+	\begin{lstlisting}
+	 
+{string} Products = ...;
+{string} Processes = ...;
+
+float Hours[Processes][Products] = ...;
+float Profit[Products] = ...;
+float Availability[Processes] = ...;
+
+// a very useful comment
+dvar int+ Production[Products];
+ 
+maximize
+  sum( p in Products ) 
+    Profit[p] * Production[p];
+subject to {
+  Production["Tables"] <= 10;
+  Production["Chairs"] <= 10;
+  forall( c in Processes )
+    ct:
+      sum( p in Products ) 
+        Hours[c][p] * Production[p] <= Availability[c];
+}
+
+tuple ProductionSolutionT{ 
+	string product; 
+	float value; 
+};
+{ProductionSolutionT} ProductionSolution = {<i0,Production[i0]> | i0 in Products};
+
+	\end{lstlisting}	
+\end{document}
