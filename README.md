@@ -1,10 +1,30 @@
-# opl-listings
+# oplistings
 
 OPL support for listings LaTeX package
 
+## Installation
+
+There are 2 alternatives to use this package (in both cases you should first clone this repository and cd to it)
+
+```bash
+git clone https://github.com/morpheusthewhite/oplistings
+cd oplistings
+```
+
+### System-wide installation
+
+After setting up your `TEXMFHOME` run
+```bash
+cp opl.sty `kpsewhich -var-value TEXMFHOME`/tex/latex/
+```
+
+### A copy for each use
+
+Move `opl.sty` into the directory of the `.tex` to which you want to add support for OPL.
+
 ## Usage
 
-Clone this repository then move `opl.sty` into the directory of the `.tex` to which you want to add support for OPL. Simply add to it
+Simply add to yout `.tex` file
 
 ```latex
 \usepackage{opl}
