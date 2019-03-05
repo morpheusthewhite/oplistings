@@ -11,7 +11,8 @@ Clone this repository then move `opl.sty` into the directory of the `.tex` to wh
 ```
 After that you can use it 
 ```latex
-\lstset[opl]{
+\lstset{
+	language=opl,
 	% whatever you want
 }
 ```
