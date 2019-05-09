@@ -15,7 +15,7 @@ cd oplistings
 
 After setting up your `TEXMFHOME` run
 ```bash
-cp opl.sty `kpsewhich -var-value TEXMFHOME`/tex/latex/
+make install
 ```
 
 ### A copy for each use
