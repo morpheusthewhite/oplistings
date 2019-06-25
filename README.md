@@ -39,6 +39,10 @@ After that you can use it
 
 An usage example can be found in `example.tex`.
 
+### Options
+
+- `js`: also highlight keywords of JavaScript language
+
 ## Caveat
 
 Since `listings` package does not support keywords of more words, `subject to` and `not in` have been splitten. That means that writing `subject` in a document will highlight it even if it is alone and doesn't have any particular meaning for OPL.
