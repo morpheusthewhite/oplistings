@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage{opl}
+\usepackage[js]{opl}
 \usepackage{listings}
 \usepackage{xcolor}
 
@@ -48,5 +48,12 @@ tuple ProductionSolutionT{
 };
 {ProductionSolutionT} ProductionSolution = {<i0,Production[i0]> | i0 in Products};
 
+// highlighted only if js is passed
+main {
+	var opl = thisOplModel
+	var dat = opl.dataElements;
+
+	console.log('Js is enabled')
+}
 	\end{lstlisting}	
 \end{document}

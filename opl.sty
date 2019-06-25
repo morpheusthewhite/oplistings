@@ -1,11 +1,42 @@
 \ProvidesPackage{opl}[2019/05/09 opl language definition]
+
 \RequirePackage{listings}
 
-\lstdefinelanguage{opl}{
-    morekeywords={all, and, assert, boolean, constraint, constraints, cp, cplex, cumulFunc, DBConnection, DBExecute, DBRead, DBUpdate, dexpr, diff, div, dvar, else, execute, false, float, floatplus, for, forall, from, if, in, include, infinity, int, intplus, intensity, inter, interval, invoke, key, main, max, maximize, maxint, min, minimize, mod, not, optional, or, ordered, piecewise, prepare, prod, pwlFunc, range, reversed, sequence, setof, SheetConnection,
-SheetRead, SheetWrite, size, sorted, SPSSConnection, SPSSRead, stateFunc, stepFunc, stepwise, string, subject, sum, symdiff, to, true, tuple, types, union, using, with},
-    sensitive=true,
-    morecomment=[l]{//},
-    morecomment=[s]{/*}{*/},
-    morestring=[b]",
-}
+% define a new variable, js, false by default
+\newif\ifopl@js
+\opl@jsfalse
+
+% js is true if option is specified
+\DeclareOption{js}{\opl@jstrue}
+
+% end of option section
+\ProcessOptions\relax
+
+\ifopl@js
+    \lstdefinelanguage{opl}{
+        keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, 
+            class, export, boolean, throw, implements, import, this,
+            all, and, assert, boolean, constraint, constraints, cp, cplex, cumulFunc, DBConnection, DBExecute, DBRead, DBUpdate, dexpr, diff, div, dvar, else, execute, false, 
+            float, floatplus, for, forall, from, if, in, include, infinity, int, intplus, intensity, inter, interval, invoke, key, main, max, maximize, maxint, min, minimize, mod, 
+            not, optional, or, ordered, piecewise, prepare, prod, pwlFunc, range, reversed, sequence, setof, SheetConnection,
+            SheetRead, SheetWrite, size, sorted, SPSSConnection, SPSSRead, stateFunc, stepFunc, stepwise, string, subject, sum, symdiff, to, true, tuple, types, union, using, with},
+        sensitive=true,
+        morecomment=[l]{//},
+        morecomment=[s]{/*}{*/},
+        morestring=[b]',
+        morestring=[b]",
+    }
+\else
+    \lstdefinelanguage{opl}{
+        morekeywords={all, and, assert, boolean, constraint, constraints, cp, cplex, cumulFunc, DBConnection, DBExecute, DBRead, DBUpdate, dexpr, diff, div, dvar, else, execute, false, 
+            float, floatplus, for, forall, from, if, in, include, infinity, int, intplus, intensity, inter, interval, invoke, key, main, max, maximize, maxint, min, minimize, mod, not, 
+            optional, or, ordered, piecewise, prepare, prod, pwlFunc, range, reversed, sequence, setof, SheetConnection,
+            SheetRead, SheetWrite, size, sorted, SPSSConnection, SPSSRead, stateFunc, stepFunc, stepwise, string, subject, sum, symdiff, to, true, tuple, types, union, using, with},
+        sensitive=true,
+        morecomment=[l]{//},
+        morecomment=[s]{/*}{*/},
+        morestring=[b]",
+    }
+\fi
+
+\endinput
